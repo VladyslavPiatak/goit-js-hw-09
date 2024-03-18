@@ -1,16 +1,10 @@
-// // Описаний в документації
-// import SimpleLightbox from "simplelightbox";
-// // Додатковий імпорт стилів
-// import "simplelightbox/dist/simple-lightbox.min.css";
-
-import {images} from "./images.js";
-console.log(images);
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import {images} from "./images";
 
 
 const gallery = document.querySelector("ul.gallery");
 gallery.insertAdjacentHTML("beforeend", createMarkupGallery(images));
-console.log(gallery);
-
 
 function createMarkupGallery(arr) {
     return arr.map(({ preview, original, description }) => `
@@ -19,10 +13,14 @@ function createMarkupGallery(arr) {
             <img
             class="gallery-image"
             src="${preview}"
-            data-source="${original}"
             alt="${description}"
             />
         </a>
     </li>
     `).join("")
 };
+
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionDelay: 250,
+    captionsData: "alt"
+});
