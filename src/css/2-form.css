@@ -1,12 +1,12 @@
 input {
-    width: 360px;
-    padding: 8px 16px;
+    width: 370px;
+    padding: 8px 15px;
     border: 1px solid #808080;
     border-radius: 4px;
 }
 textarea {
-    width: 360px;
-    padding: 8px 16px;
+    width: 370px;
+    padding: 8px 15px;
     border: 1px solid #808080;
     border-radius: 4px;
 }
