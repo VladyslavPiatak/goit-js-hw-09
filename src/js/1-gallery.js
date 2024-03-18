@@ -3,7 +3,8 @@
 // // Додатковий імпорт стилів
 // import "simplelightbox/dist/simple-lightbox.min.css";
 
-import {images} from "./imeges.js";
+import {images} from "./images.js";
+console.log(images);
 
 
 const gallery = document.querySelector("ul.gallery");
@@ -20,7 +21,6 @@ function createMarkupGallery(arr) {
             src="${preview}"
             data-source="${original}"
             alt="${description}"
-            width="360"
             />
         </a>
     </li>
