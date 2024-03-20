@@ -3,7 +3,6 @@ const key = "feedback-form-state";
 
 const savedSet = localStorage.getItem(key);
 const parsedSet = JSON.parse(savedSet);
-console.log(parsedSet);
 
 form.elements.email.value = parsedSet.email;
 form.elements.message.value = parsedSet.message;
@@ -26,6 +25,7 @@ function clearForm(event) {
         email: inputData.elements.email.value,
         message: inputData.elements.message.value
     });
-    localStorage.clear();
+    // localStorage.removeItem(key);
+    // localStorage.clear();
     inputData.reset();
 };
