@@ -6,9 +6,9 @@ const parsedSettings = JSON.parse(savedSettings);
 inputData.elements.email.value = parsedSettings.email;
 inputData.elements.message.value = parsedSettings.message;
 
-
 inputData.addEventListener("input", saveData);
 inputData.addEventListener("submit", clearForm);
+
 
 function saveData(event) {
     const formData = {
@@ -20,5 +20,9 @@ function saveData(event) {
 
 function clearForm(event) {
     event.preventDefault();
+    console.log({
+        email: inputData.elements.email.value.trim(),
+        message: inputData.elements.message.value.trim()
+    });
     inputData.reset();
-}
+};
