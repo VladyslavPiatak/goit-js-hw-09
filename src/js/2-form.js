@@ -4,8 +4,13 @@ const key = "feedback-form-state";
 const savedSet = localStorage.getItem(key);
 const parsedSet = JSON.parse(savedSet);
 
-form.elements.email.value = parsedSet.email;
-form.elements.message.value = parsedSet.message;
+if (savedSet) {
+    form.elements.email.value = parsedSet.email;
+    form.elements.message.value = parsedSet.message;
+}
+
+
+
 
 form.addEventListener("input", saveData);
 form.addEventListener("submit", clearForm);
@@ -22,10 +27,9 @@ function saveData(event) {
 function clearForm(event) {
     event.preventDefault();
     console.log({
-        email: inputData.elements.email.value,
-        message: inputData.elements.message.value
+        email: form.elements.email.value,
+        message: form.elements.message.value
     });
-    // localStorage.removeItem(key);
-    // localStorage.clear();
-    inputData.reset();
+    localStorage.removeItem(key);
+    form.reset();
 };
