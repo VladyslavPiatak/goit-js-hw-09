@@ -1,19 +1,21 @@
-const inputData = document.querySelector(`.feedback-form`);
+const form = document.querySelector(`.feedback-form`);
 const key = "feedback-form-state";
 
-const savedSettings = localStorage.getItem(key);
-const parsedSettings = JSON.parse(savedSettings);
-inputData.elements.email.value = parsedSettings.email;
-inputData.elements.message.value = parsedSettings.message;
+const savedSet = localStorage.getItem(key);
+const parsedSet = JSON.parse(savedSet);
+console.log(parsedSet);
 
-inputData.addEventListener("input", saveData);
-inputData.addEventListener("submit", clearForm);
+form.elements.email.value = parsedSet.email;
+form.elements.message.value = parsedSet.message;
+
+form.addEventListener("input", saveData);
+form.addEventListener("submit", clearForm);
 
 
 function saveData(event) {
     const formData = {
-        email: inputData.elements.email.value.trim(),
-        message: inputData.elements.message.value.trim()
+        email: form.elements.email.value.trim(),
+        message: form.elements.message.value.trim()
     };
     localStorage.setItem(key, JSON.stringify(formData));
 };
@@ -21,8 +23,9 @@ function saveData(event) {
 function clearForm(event) {
     event.preventDefault();
     console.log({
-        email: inputData.elements.email.value.trim(),
-        message: inputData.elements.message.value.trim()
+        email: inputData.elements.email.value,
+        message: inputData.elements.message.value
     });
+    localStorage.clear();
     inputData.reset();
 };
