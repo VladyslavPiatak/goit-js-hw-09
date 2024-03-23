@@ -1,15 +1,23 @@
 const form = document.querySelector(`.feedback-form`);
 const key = "feedback-form-state";
-
 const savedSet = localStorage.getItem(key);
 const parsedSet = JSON.parse(savedSet);
 
-if (savedSet) {
-    form.elements.email.value = parsedSet.email;
-    form.elements.message.value = parsedSet.message;
-}
-
-
+const loadFormState = () => {
+    try {
+        const parsedSet = JSON.parse(savedSet);
+    } catch (error) {
+        console.error("Помилка при розборі JSON:", error);
+        form.reset();
+    };
+    if (savedSet) {
+        form.elements.email.value = parsedSet.email;
+        form.elements.message.value = parsedSet.message;
+        return savedSet;
+    };
+};
+// Load form state when the page loads
+loadFormState();
 
 
 form.addEventListener("input", saveData);
