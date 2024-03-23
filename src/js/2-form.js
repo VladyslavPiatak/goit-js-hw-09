@@ -10,7 +10,7 @@ const loadFormState = () => {
         console.error("Помилка при розборі JSON:", error);
         form.reset();
     };
-    if (savedSet) {
+    if (savedSet !== null) {
         form.elements.email.value = parsedSet.email;
         form.elements.message.value = parsedSet.message;
         return savedSet;
